@@ -22,6 +22,18 @@ def not_found(error):
     return make_response(jsonify({"error": "Not found"}), 404)
 
 
+# @app.errorhandler(400)
+# def not_json(error):
+#     """Return json string in case of 400, Not JSON"""
+#     return make_response(jsonify({"error": "Not a JSON"}), 400)
+
+
+# @app.errorhandler(401)
+# def missing_name(error):
+#     """Return json string in case of 401, Not Found"""
+#     return make_response(jsonify({"error": "Not found"}), 404)
+
+
 if __name__ == "__main__":
     host = getenv("HBNB_API_HOST") or '0.0.0.0'
     port = getenv("HBNB_API_PORT") or 5000
