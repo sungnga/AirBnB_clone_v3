@@ -43,9 +43,8 @@ def create_user():
         return make_response(jsonify({'error': 'Missing email'}), 400)
     if 'password' not in request.get_json():
         return make_response(jsonify({'error': 'Missing password'}), 400)
-    email = request.get_json().get('email')
-    password = request.get_json().get('password')
-    obj = User(email=email, password=password)
+    d = request.get_json()
+    obj = User(**d)
     obj.save()
     return jsonify(obj.to_dict()), 201
 
