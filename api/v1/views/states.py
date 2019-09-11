@@ -44,8 +44,8 @@ def create():
         return jsonify({'error': 'Not a JSON'}), 400
     if 'name' not in request.get_json():
         return jsonify({'error': 'Missing name'}), 400
-    name = request.get_json().get('name')
-    obj = State(name=name)
+    d = request.get_json()
+    obj = State(**d)
     obj.save()
     return jsonify(obj.to_dict()), 201
 
