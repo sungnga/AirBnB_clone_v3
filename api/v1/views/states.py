@@ -41,9 +41,11 @@ def delete(state_id):
 def create():
     """Create a state object"""
     if not request.get_json():
-        return jsonify({'error': 'Not a JSON'}), 400
+        abort(400, 'Not a JSON')
+        #return jsonify({'error': 'Not a JSON'}), 400
     if 'name' not in request.get_json():
-        return jsonify({'error': 'Missing name'}), 400
+        abort(400, 'Missing name')
+        #return jsonify({'error': 'Missing name'}), 400
     d = request.get_json()
     obj = State(**d)
     obj.save()
@@ -54,7 +56,8 @@ def create():
 def update(state_id):
     """Updates a state object"""
     if not request.get_json():
-        return jsonify({'error': 'Not a JSON'}), 400
+        abort(400, 'Not a JSON')
+        #return jsonify({'error': 'Not a JSON'}), 400
     obj = storage.get("State", state_id)
     if obj is None:
         abort(404)
