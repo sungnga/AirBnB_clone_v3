@@ -51,11 +51,11 @@ def create_review(place_id):
         abort(404)
     if not request.get_json():
         return jsonify({'error': 'Not a JSON'}), 400
+    if 'user_id' not in request.get_json():
+        return jsonify({'error': 'Missing user_id'}), 400
     user = storage.get("User", request.get_json().get('user_id'))
     if user is None:
         abort(404)
-    if 'user_id' not in request.get_json():
-        return jsonify({'error': 'Missing user_id'}), 400
     user_id = request.get_json().get('user_id')
     if 'text' not in request.get_json():
         return jsonify({'error': 'Missing text'}), 400
