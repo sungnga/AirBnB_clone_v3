@@ -9,9 +9,6 @@ from models.state import State
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get():
     """Retrieve all state objects"""
-    # l = []
-    # for obj in storage.all("State").values():
-    #     l.append(obj.to_dict())
     l = [obj.to_dict() for obj in storage.all("State").values()]
     return jsonify(l)
 
@@ -41,11 +38,9 @@ def delete(state_id):
 def create():
     """Create a state object"""
     if not request.get_json():
-        abort(400, 'Not a JSON')
-        #return jsonify({'error': 'Not a JSON'}), 400
+        return jsonify({'error': 'Not a JSON'}), 400
     if 'name' not in request.get_json():
-        abort(400, 'Missing name')
-        #return jsonify({'error': 'Missing name'}), 400
+        return jsonify({'error': 'Missing name'}), 400
     d = request.get_json()
     obj = State(**d)
     obj.save()
@@ -56,8 +51,7 @@ def create():
 def update(state_id):
     """Updates a state object"""
     if not request.get_json():
-        abort(400, 'Not a JSON')
-        #return jsonify({'error': 'Not a JSON'}), 400
+        return jsonify({'error': 'Not a JSON'}), 400
     obj = storage.get("State", state_id)
     if obj is None:
         abort(404)
