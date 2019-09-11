@@ -9,12 +9,12 @@ from models.city import City
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
-def get_places(state_id):
+def get_places(city_id):
     """Retrieve all places objects of a state"""
-    state = storage.get("City", state_id)
-    if state is None:
+    city = storage.get("City", city_id)
+    if city is None:
         abort(404)
-    places = state.places
+    places = city.places
     p_list = []
     for p in places:
         p_list.append(p.to_dict())
