@@ -76,4 +76,5 @@ def update_review(review_id):
     for k, v in request.get_json().items():
         if k not in ['id', 'user_id', 'place_id', 'created_at', 'updated_at']:
             setattr(obj, k, v)
+    storage.save()
     return jsonify(obj.to_dict())
