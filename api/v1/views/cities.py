@@ -9,7 +9,7 @@ from models.city import City
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
-def get_cities(state_id):
+def get_city(state_id):
     """Retrieve all cities objects of a state"""
     state = storage.get("State", state_id)
     if state is None:
@@ -22,7 +22,7 @@ def get_cities(state_id):
 
 
 @app_views.route('/cities/<city_id>', methods=['GET'])
-def city_by_id(city_id):
+def get_city_by_id(city_id):
     """Retrieve a city object by id"""
     obj = storage.get("City", city_id)
     if obj is None:
