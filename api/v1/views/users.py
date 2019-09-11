@@ -38,11 +38,11 @@ def delete_user(user_id):
 def create_user():
     """Create a user object"""
     if not request.get_json():
-        return jsonify({'error': 'Not a JSON'}), 400
+        return make_response(jsonify({'error': 'Not a JSON'}), 400)
     if 'email' not in request.get_json():
-        return jsonify({'error': 'Missing email'}), 400
+        return make_response(jsonify({'error': 'Missing email'}), 400)
     if 'password' not in request.get_json():
-        return jsonify({'error': 'Missing password'}), 400
+        return make_response(jsonify({'error': 'Missing password'}), 400)
     email = request.get_json().get('email')
     password = request.get_json().get('password')
     obj = User(email=email, password=password)
@@ -54,7 +54,7 @@ def create_user():
 def update_user(user_id):
     """Updates a user object"""
     if not request.get_json():
-        return jsonify({'error': 'Not a JSON'}), 400
+        return make_response(jsonify({'error': 'Not a JSON'}), 400)
     obj = storage.get("User", user_id)
     if obj is None:
         abort(404)
