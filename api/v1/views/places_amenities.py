@@ -37,18 +37,18 @@ def delete_amenity_from_places(place_id, amenity_id):
     obj = storage.get("Amenity", amenity_id)
     if obj is None:
         abort(404)
-    if storage_t == 'db':
-        l = place.amenities
-        if obj not in l:
-            abort(404)
-        del l[l.index(obj)]
-    else:
-        l = place.amenity_ids
-        if amenity_id not in l:
-            abort(404)
-        del l[l.index(amenity_id)]
+    # if storage_t == 'db':
+    #     l = place.amenities
+    #     if obj not in l:
+    #         abort(404)
+    #     del l[l.index(obj)]
+    # else:
+    #     l = place.amenity_ids
+    #     if amenity_id not in l:
+    #         abort(404)
+    #     del l[l.index(amenity_id)]
+    place.amenities.remove(obj)
     storage.save()
-    storage.reload()
     return jsonify({})
 
 
