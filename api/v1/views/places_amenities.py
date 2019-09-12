@@ -15,15 +15,18 @@ def get_amenities(place_id):
     if place is None:
         abort(404)
     r_list = []
-    if storage_t == 'db':
-        amenities = place.amenities
-        for r in amenities:
-            r_list.append(r.to_dict())
-    else:
-        amenities = place.amenity_ids
-        for ids in amenities:
-            amenity = storage.get('Amenity', ids)
-            r_list.append(amenity.to_dict())
+    # if storage_t == 'db':
+    #     amenities = place.amenities
+    #     for r in amenities:
+    #         r_list.append(r.to_dict())
+    # else:
+    #     amenities = place.amenity_ids
+    #     for ids in amenities:
+    #         amenity = storage.get('Amenity', ids)
+    #         r_list.append(amenity.to_dict())
+    amenities = place.amenities
+    for r in amenities:
+        r_list.append(r.to_dict())
     return jsonify(r_list)
 
 
