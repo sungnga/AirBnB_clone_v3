@@ -36,8 +36,3 @@ class User(BaseModel, Base):
         if k == "password":
             v = self.hashlib.md5(v.encode()).hexdigest()
         super().__setattr__(k, v)
-
-
-    def secure_pwd(self, password):
-        """hashes user's password"""
-        self.password = hashlib.md5(v.encode()).hexdigest()
