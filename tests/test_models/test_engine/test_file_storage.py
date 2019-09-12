@@ -113,3 +113,41 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+
+    def test_get_fstorage(self):
+        """Test get of storage engine with valid data"""
+        obj = State(name="Some state")
+        obj.save()
+        models.storage.save()
+        return_obj = models.storage.get('State', obj.id)
+        self.assertEqual(obj, return_obj)
+
+    def test_get_fstorage_none(self):
+        """Test get of storage engine with invalid input"""
+        obj = State(name="Some state")
+        obj.save()
+        return_obj = models.storage.get('State', 'not_valid_id')
+        self.assertEqual(return_obj, None)
+        return_obj = models.storage.get('Not_valid_class', obj.id)
+        self.assertEqual(return_obj, None)
+        return_obj = models.storage.get('State', 123456789)
+        self.assertEqual(return_obj, None)
+
+    def test_count_fstorage(self):
+        """Test count() of storage engine without cls name"""
+        old_count = models.storage.count()
+        obj = State(name="Some state")
+        obj.save()
+        new_count = models.storage.count()
+        self.assertEqual(old_count + 1, new_count)
+
+    def test_count_fstorage_cls(self):
+        """Test count() of storage engine with class name"""
+        old_count = models.storage.count()
+        old_count_cls = models.storage.count('State')
+        obj = State(name="New York")
+        obj.save()
+        new_count = models.storage.count()
+        new_count_cls = models.storage.count('State')
+        self.assertEqual(old_count + 1, new_count)
+        self.assertEqual(old_count_cls + 1, new_count_cls)
