@@ -15,15 +15,6 @@ def get_amenities(place_id):
     if place is None:
         abort(404)
     r_list = []
-    # if storage_t == 'db':
-    #     amenities = place.amenities
-    #     for r in amenities:
-    #         r_list.append(r.to_dict())
-    # else:
-    #     amenities = place.amenity_ids
-    #     for ids in amenities:
-    #         amenity = storage.get('Amenity', ids)
-    #         r_list.append(amenity.to_dict())
     amenities = place.amenities
     for r in amenities:
         r_list.append(r.to_dict())
@@ -40,16 +31,8 @@ def delete_amenity_from_places(place_id, amenity_id):
     obj = storage.get("Amenity", amenity_id)
     if obj is None:
         abort(404)
-    # if storage_t == 'db':
-    #     l = place.amenities
-    #     if obj not in l:
-    #         abort(404)
-    #     del l[l.index(obj)]
-    # else:
-    #     l = place.amenity_ids
-    #     if amenity_id not in l:
-    #         abort(404)
-    #     del l[l.index(amenity_id)]
+    if obj not in place.amenities:
+        abort(404)
     place.amenities.remove(obj)
     storage.save()
     return jsonify({})
@@ -65,17 +48,8 @@ def create_amenity_places(place_id, amenity_id):
     obj = storage.get("Amenity", amenity_id)
     if obj is None:
         abort(404)
-
-    # if storage_t == 'db':
-    #     if obj in place.amenities:
-    #         return jsonify(place.to_dict())
-    #     place.amenities.append(obj)
-    # else:
-    #     if amenity_id in place.amenity_ids:
-    #         return jsonify(place.to_dict())
-    #     place.amenity_ids.append(amenity_id)
     if obj in place.amenities:
-        return jsonify(place.to_dict()), 200
+        return jsonify(obj.to_dict()), 200
     place.amenities.append(obj)
     storage.save()
-    return jsonify(place.to_dict()), 201
+    return jsonify(obj.to_dict()), 201
