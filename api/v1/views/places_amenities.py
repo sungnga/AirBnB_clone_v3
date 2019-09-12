@@ -63,13 +63,16 @@ def create_amenity_places(place_id, amenity_id):
     if obj is None:
         abort(404)
 
-    if storage_t == 'db':
-        if obj in place.amenities:
-            return jsonify(place.to_dict())
-        place.amenities.append(obj)
-    else:
-        if amenity_id in place.amenity_ids:
-            return jsonify(place.to_dict())
-        place.amenity_ids.append(amenity_id)
+    # if storage_t == 'db':
+    #     if obj in place.amenities:
+    #         return jsonify(place.to_dict())
+    #     place.amenities.append(obj)
+    # else:
+    #     if amenity_id in place.amenity_ids:
+    #         return jsonify(place.to_dict())
+    #     place.amenity_ids.append(amenity_id)
+    if obj in place.amenities:
+        return jsonify(place.to_dict()), 200
+    place.amenities.append(obj)
     storage.save()
     return jsonify(place.to_dict()), 201
