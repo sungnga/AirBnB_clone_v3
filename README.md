@@ -172,7 +172,7 @@ guillaume@ubuntu:~/AirBnB_v3$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_p
 
 In another terminal:
 
-* To retrieve the list of all `State` objects: `GET /api/v1/states'
+* To retrieve the list of all `State` objects: `GET /api/v1/states`
 ```
 guillaume@ubuntu:~/AirBnB_v3$ curl -X GET http://0.0.0.0:5000/api/v1/states
 ```
