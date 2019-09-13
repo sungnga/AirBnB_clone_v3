@@ -153,8 +153,8 @@ EOF  all  create  destroy  help  quit  show  update
 
 ## RESTful API
 The HTTP request methods implemented in this project:
-**HTTP Method** | **Action** | **URI**
-----|----|----
+HTTP Method | Action | URI
+----------- | ------ | ----
 GET | Retrieve list of objects of a class | http://0.0.0.0:5000/api/v1/states
 GET | Retrieve an object of a class by id | http://0.0.0.0:5000/api/v1/states/<states_id>
 DELETE | Delete an object of a class by id | http://0.0.0.0:5000/api/v1/states/<states_id>
