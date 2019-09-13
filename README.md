@@ -161,8 +161,8 @@ Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://tw
 
 Second part of Airbnb: Joann Vuong
 
-Third part of Airbnb: Farrukh Akhrarov - [Github](https://github.com/narnat)
-
+### Third part of Airbnb:
+Farrukh Akhrarov - [Github](https://github.com/narnat)
 Nga La - [Github](https://github.com/sungnga)
 
 ## License
