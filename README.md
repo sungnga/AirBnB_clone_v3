@@ -204,10 +204,10 @@ No known bugs at this time.
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 
-#### Second part of Airbnb: 
+Second part of Airbnb:  
 Joann Vuong
 
-#### Third part of Airbnb:
+Third part of Airbnb:  
 Farrukh Akhrarov - [Github](https://github.com/narnat)   
 Nga La - [Github](https://github.com/sungnga)
 
