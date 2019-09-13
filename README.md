@@ -157,11 +157,11 @@ The HTTP request methods implemented in this project:
 
 HTTP Method | Action | URI
 ----------- | ------ | ----
-GET | Retrieve list of objects of a class | ```http://0.0.0.0:5000/api/v1/states```
-GET | Retrieve an object of a class by id | ```http://0.0.0.0:5000/api/v1/states/<states_id>```
-DELETE | Delete an object of a class by id | ```http://0.0.0.0:5000/api/v1/states/<states_id>```
-POST | Create an object of a class | ```http://0.0.0.0:5000/api/v1/states```
-PUT | Update an object of a class by id | ```http://0.0.0.0:5000/api/v1/states/<states_id>```
+GET | Retrieve list of objects of a class | http://0.0.0.0:5000/api/v1/states
+GET | Retrieve an object of a class by id | http://0.0.0.0:5000/api/v1/states/<states_id>
+DELETE | Delete an object of a class by id | http://0.0.0.0:5000/api/v1/states/<states_id>
+POST | Create an object of a class | http://0.0.0.0:5000/api/v1/states
+PUT | Update an object of a class by id | http://0.0.0.0:5000/api/v1/states/<states_id>
 
 
 ## Bugs
